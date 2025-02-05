@@ -21,13 +21,14 @@ phases:
       - terraform validate
       - terraform plan -out=tfplan  # Generate the Terraform plan
       - terraform apply -auto-approve tfplan  # Apply the Terraform plan
-
   post_build:
     commands:
+      - echo "Checking the result of terraform apply..."
       - |
         if [ $? -ne 0 ]; then
           echo "Terraform apply failed, rolling back..."
           terraform destroy -auto-approve  # Trigger terraform destroy in case of failure
+          exit 1  # Exit with error to indicate failure
         else
           echo "Terraform apply succeeded."
         fi
