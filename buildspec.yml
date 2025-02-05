@@ -22,5 +22,7 @@ phases:
       - terraform plan -out=tfplan
   post_build:
     commands:
-      - echo "Cleaning up Terraform state files..."
-      - rm -rf .terraform 
+      - echo "Destroy"
+      - terraform destroy -auto-approve
+
+  
