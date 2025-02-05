@@ -19,7 +19,12 @@ phases:
       - echo "Validating Terraform configuration..."
       - terraform validate
       - terraform plan -out=tfplan  # Generate the Terraform plan
-      - terraform apply -auto-approve tfplan  # Apply the Terraform plan
+      - |
+        if [ $? -ne 0 ]; then
+          echo "Terraform plan failed, exiting build..."
+          exit 1  # Exit the build process if terraform plan fails
+        fi
+      - terraform apply -auto-approve tfplan  # Apply the Terraform plan if plan is successful
   post_build:
     commands:
       - echo "Checking the result of terraform apply..."
