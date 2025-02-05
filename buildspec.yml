@@ -25,9 +25,8 @@ phases:
       - echo "Checking the result of terraform apply..."
       - |
         if [ $? -ne 0 ]; then
-          echo "Terraform apply failed, rolling back..."
-          terraform destroy -auto-approve  # Trigger terraform destroy in case of failure
-          exit 1  # Exit with error to indicate failure
+          echo "Terraform apply failed."
+          exit 1  # Exit with error to indicate failure, without destroying infrastructure
         else
           echo "Terraform apply succeeded."
         fi
