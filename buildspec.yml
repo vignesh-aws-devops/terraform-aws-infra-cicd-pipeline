@@ -31,7 +31,3 @@ phases:
           echo "Terraform apply succeeded."
         fi
 
-artifacts:
-  files:
-    - tfplan  # Store the plan as an artifact
-    - terraform.tfstate
