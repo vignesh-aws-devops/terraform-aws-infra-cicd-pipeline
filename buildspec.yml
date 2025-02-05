@@ -12,7 +12,7 @@ phases:
       - mv terraform /usr/local/bin/
       - chmod +x bootstrap.sh  # Ensure bootstrap script is executable
       - ls -l  # List files to verify bootstrap.sh is present and executable
-      - ./bootstrap.sh  # Execute the bootstrap script
+      - terraform init
       - terraform --version
       - aws --version
   build:
@@ -35,5 +35,5 @@ phases:
 
 artifacts:
   files:
-    - tfplan  
+    - tfplan  # Store the plan as an artifact
     - terraform.tfstate
