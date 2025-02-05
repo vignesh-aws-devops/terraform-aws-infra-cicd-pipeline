@@ -1,0 +1,26 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: latest
+  pre_build:
+    commands:
+      - echo "Installing Terraform..."
+      - curl -o terraform.zip https://releases.hashicorp.com/terraform/1.6.0/terraform_1.6.0_linux_amd64.zip
+      - unzip terraform.zip
+      - mv terraform /usr/local/bin/
+      - chmod +x bootstrap.sh  # Ensure bootstrap script is executable
+      - ls -l  # List files to verify bootstrap.sh is present and executable
+      - ./bootstrap.sh  # Execute the bootstrap script
+      - terraform --version
+      - aws --version
+  build:
+    commands:
+      - echo "Validating Terraform configuration..."
+      - terraform validate
+      - terraform plan -out=tfplan
+  post_build:
+    commands:
+      - echo "Applying Terraform changes..."
+      - terraform apply -auto-approve
