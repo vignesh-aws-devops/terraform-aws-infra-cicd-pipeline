@@ -20,9 +20,18 @@ phases:
       - echo "Validating Terraform configuration..."
       - terraform validate
       - terraform plan -out=tfplan  # Generate the Terraform plan
+      - terraform apply -auto-approve tfplan  # Apply the Terraform plan
+
   post_build:
     commands:
-      - echo "Terraform plan completed. The plan file is saved as 'tfplan'."
+      - |
+        if [ $? -ne 0 ]; then
+          echo "Terraform apply failed, rolling back..."
+          terraform destroy -auto-approve  # Trigger terraform destroy in case of failure
+        else
+          echo "Terraform apply succeeded."
+        fi
+
 artifacts:
   files:
     - tfplan  # Store the plan as an artifact
