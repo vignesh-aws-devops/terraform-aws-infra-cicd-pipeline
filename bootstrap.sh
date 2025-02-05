@@ -38,7 +38,7 @@ else
         --table-name "$DYNAMODB_TABLE" \
         --attribute-definitions AttributeName=LockID,AttributeType=S \
         --key-schema AttributeName=LockID,KeyType=HASH \
-        --billing-mode PAY_PER_REQUEST
+        --billing-mode PAY_PER_REQUEST \
         --region us-west-1
     
     echo "DynamoDB table '$DYNAMODB_TABLE' created successfully."
