@@ -4,16 +4,17 @@ phases:
   install:
     runtime-versions:
       python: latest
-  pre_build:
     commands:
       - echo "Installing Terraform..."
-      - curl -o terraform.zip https://releases.hashicorp.com/terraform/latest/terraform_latest_linux_amd64.zip
-      - unzip terraform.zip
-      - mv terraform /usr/local/bin/
-      - ls -l  # List files to verify bootstrap.sh is present and executable
+      # Install Terraform using the HashiCorp APT repository
+      - wget -O - https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+      - echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+      - sudo apt update && sudo apt install terraform
+      - terraform --version  # Verify that Terraform was installed correctly
+  pre_build:
+    commands:
+      - echo "Initializing Terraform..."
       - terraform init
-      - terraform --version
-      - aws --version
   build:
     commands:
       - echo "Validating Terraform configuration..."
@@ -32,7 +33,6 @@ phases:
         if [ $? -ne 0 ]; then
           echo "Terraform apply failed."
           exit 1  # Exit with error to indicate failure, without destroying infrastructure
-        else
+        else:
           echo "Terraform apply succeeded."
         fi
-
