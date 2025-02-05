@@ -1,0 +1,10 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: latest
+  build:
+    commands:
+      - echo "Applying Terraform changes using the stored plan..."
+      - terraform apply tfplan  # Apply the exact plan from the build stage

@@ -19,10 +19,10 @@ phases:
     commands:
       - echo "Validating Terraform configuration..."
       - terraform validate
-      - terraform plan -out=tfplan
+      - terraform plan -out=tfplan  # Generate the Terraform plan
   post_build:
     commands:
-      - echo "Destroy"
-      - terraform destroy -auto-approve
-
-  
+      - echo "Terraform plan completed. The plan file is saved as 'tfplan'."
+artifacts:
+  files:
+    - tfplan  # Store the plan as an artifact
