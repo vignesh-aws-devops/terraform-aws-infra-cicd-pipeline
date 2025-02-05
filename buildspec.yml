@@ -22,7 +22,5 @@ phases:
       - terraform plan -out=tfplan
   post_build:
     commands:
-      - echo "Applying Terraform changes..."
-      - terraform apply -auto-approve
       - echo "Cleaning up Terraform state files..."
       - rm -rf .terraform 
