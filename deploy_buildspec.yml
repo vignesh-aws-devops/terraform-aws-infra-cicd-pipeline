@@ -7,4 +7,8 @@ phases:
   build:
     commands:
       - echo "Applying Terraform changes using the stored plan..."
-      - terraform apply tfplan  # Apply the exact plan from the build stage
+      - terraform apply tfplan || (echo "Terraform apply failed. Running Terraform destroy..." && terraform destroy -auto-approve)
+
+  post_build:
+    commands:
+      - echo "Terraform apply completed successfully or was rolled back due to an error."
