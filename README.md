@@ -15,6 +15,10 @@ I’m excited to share that I’ve successfully built and deployed a two-tier ar
 
 ---
 
+## 🖼️ **Architecture Overview**  
+![AWS Two Tier Architecture](AWS%20Two%20Tier%20Architecture%20using%20Terraform.png)  
+
+
 ## 🏗️ **Terraform Workflow & Commands Used**  
 🟣 **terraform init** – Initializes the working directory, downloads provider plugins, and configures the backend  
 🟣 **terraform plan** – Generates and displays an execution plan before making changes  
