@@ -7,6 +7,6 @@ resource "aws_instance" "pub_instance" {
   key_name                    = var.key_name
 
   tags = {
-    Name = "Public EC2 Instance"
+    Name = "Public EC2 Instance 1"
   }
 }
