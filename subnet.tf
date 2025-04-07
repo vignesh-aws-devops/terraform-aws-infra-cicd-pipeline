@@ -4,6 +4,6 @@ resource "aws_subnet" "pubsub" {
   availability_zone = "${var.aws_region}b"
 
   tags = {
-    Name = "Public Subnet"
+    Name = "Public Subnet 01"
   }
 }
