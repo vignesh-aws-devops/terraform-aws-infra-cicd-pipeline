@@ -3,7 +3,7 @@ resource "aws_security_group" "pubsg" {
 
   ingress {
     from_port   = 0
-    to_port     = 65535
+    to_port     = 22
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
