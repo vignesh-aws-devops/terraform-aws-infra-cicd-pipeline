@@ -18,7 +18,7 @@ resource "aws_route_table" "public-rt" {
   }
 
   tags = {
-    Name = "Public Route Table"
+    Name = "Public Route Table 01"
   }
 }
 
