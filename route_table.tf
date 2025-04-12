@@ -1,5 +1,4 @@
 
-# Internet Gateway
 resource "aws_internet_gateway" "tigw" {
   vpc_id = aws_vpc.myvpc.id
 
@@ -8,7 +7,7 @@ resource "aws_internet_gateway" "tigw" {
   }
 }
 
-# Public Route Table
+
 resource "aws_route_table" "public-rt" {
   vpc_id = aws_vpc.myvpc.id
 
@@ -22,7 +21,6 @@ resource "aws_route_table" "public-rt" {
   }
 }
 
-# Associate Public Subnet with Public Route Table
 resource "aws_route_table_association" "pubsub-associate" {
   subnet_id      = aws_subnet.pubsub.id
   route_table_id = aws_route_table.public-rt.id
