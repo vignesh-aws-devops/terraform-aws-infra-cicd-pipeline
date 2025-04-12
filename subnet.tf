@@ -4,6 +4,18 @@ resource "aws_subnet" "pubsub" {
   availability_zone = "${var.aws_region}b"
 
   tags = {
-    Name = "Public Subnet 01"
+    Name = "Public Subnet"
   }
 }
+
+resource "aws_subnet" "private_subnet" {
+  vpc_id                  = aws_vpc.myvpc.id
+  cidr_block              = var.private_subnet_cidr
+  availability_zone       = "${var.aws_region}a"
+  map_public_ip_on_launch = false
+
+  tags = {
+    Name = "Private Subnet"
+  }
+}
+
