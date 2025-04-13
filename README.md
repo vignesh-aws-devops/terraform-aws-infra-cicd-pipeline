@@ -1,47 +1,56 @@
-# 🚀 Two-Tier AWS Architecture Using Terraform 🚀
+# 🚀 Terraform CI/CD Pipeline on AWS
 
-I’m excited to share that I’ve successfully built and deployed a two-tier architecture on AWS using **Terraform** for infrastructure automation! This setup includes a VPC with public and private subnets, an EC2 instance in each subnet, and a NAT Gateway to enable outbound internet access for private instances. Remote state management with S3 and DynamoDB ensures consistency and prevents conflicts in a collaborative environment.
-
----
-
-## 🌟 **Key Concepts Implemented**  
-✅ **Terraform Server** – A dedicated instance to execute Terraform commands  
-✅ **Remote State Management** – Terraform state stored in Amazon S3 for consistency  
-✅ **State Locking with DynamoDB** – Prevents conflicts in multi-user environments  
-✅ **VPC with Public & Private Subnets** – Secure network segmentation for isolation  
-✅ **Internet Gateway (IGW) & NAT Gateway** – Enabling secure internet access where required  
-✅ **Public and Private EC2 Instances** – Public EC2 for external access and private EC2 for internal workloads  
-✅ **Terraform Modules** – Modular approach for managing VPC and EC2 instances efficiently  
+Automated the provisioning and management of AWS infrastructure using a fully integrated CI/CD pipeline powered by Terraform, AWS CodePipeline, and CodeBuild. This setup ensures faster, repeatable, and error-free deployments — all triggered by code commits on GitHub!
 
 ---
 
-## 🖼️ **Architecture Overview**  
-![AWS Two Tier Architecture](AWS%20Two%20Tier%20Architecture%20using%20Terraform.png)  
+## ✅ Key Concepts Implemented
 
-
-## 🏗️ **Terraform Workflow & Commands Used**  
-🟣 **terraform init** – Initializes the working directory, downloads provider plugins, and configures the backend  
-🟣 **terraform plan** – Generates and displays an execution plan before making changes  
-🟣 **terraform apply** – Deploys the infrastructure as per the defined Terraform configuration  
-🟣 **terraform destroy** – Tears down resources when no longer needed  
-🟣 **Terraform Modules** – Breaking infrastructure into reusable components like separate modules for VPC and EC2  
-
----
-
-## 🚀 **Takeaways & Learnings**  
-💡 **Remote state management** is crucial when working in a team environment  
-💡 **Terraform modules** help maintain clean and reusable infrastructure code  
-💡 **Implementing security best practices** (private subnets, IAM roles, state locking) enhances cloud security  
-💡 **Automating deployments** eliminates manual errors and ensures faster provisioning  
-💡 **Understanding AWS networking** (VPC, IGW, NAT, and route tables) is key to building scalable architectures  
-💡 **Infrastructure as Code (IaC)** is the future, making deployments seamless and repeatable  
+- ✅ **CodePipeline Integration** – Automatically triggers infrastructure deployments on GitHub commits  
+- ✅ **AWS CodeBuild** – Executes Terraform commands in a managed build environment  
+- ✅ **Remote State Management with S3** – Stores Terraform state securely and centrally  
+- ✅ **State Locking with DynamoDB** – Prevents state conflicts in collaborative deployments  
+- ✅ **Terraform Modules** – Reusable code structure for scalable and maintainable infra  
+- ✅ **S3 + DynamoDB Backend** – Ensures consistent and reliable state management  
+- ✅ **Secure IAM Roles** – Scoped permissions for build and pipeline execution  
 
 ---
 
-## 🔗 **GitHub Repo**  
-👉 [Terraform Two-Tier AWS Architecture](https://lnkd.in/g2aGEc_f)  
+## 🖼️ Architecture Overview
+
+![Terraform CI/CD Architecture](terraform-aws-cicd%20pipeline.png)
 
 ---
 
-## 🟢 **Let’s Connect!**  
-If you’re passionate about DevOps or curious about AWS automation, let’s connect! I’d love to exchange ideas, discuss strategies, or collaborate on exciting projects.  
+## 🛠️ CI/CD Workflow & Commands Used
+
+- 🟣 `terraform init` – Initializes backend and downloads providers  
+- 🟣 `terraform validate` – Ensures the configuration syntax is correct  
+- 🟣 `terraform plan` – Shows the proposed execution plan  
+- 🟣 `terraform apply -auto-approve` – Provisions infrastructure automatically  
+- 🟣 `terraform destroy` (manual trigger) – Cleanly tears down infrastructure post-validation  
+- 🟣 `buildspec.yml` – Defines Terraform workflow inside CodeBuild  
+- 🟣 **GitHub Webhooks** – Triggers pipeline on every push to the main branch  
+
+---
+
+## 📚 Takeaways & Learnings
+
+- 💡 Automating infrastructure provisioning enhances speed and reliability  
+- 💡 GitHub + CodePipeline creates a powerful DevOps workflow  
+- 💡 S3 and DynamoDB backends bring state safety and collaboration readiness  
+- 💡 Separation of environments (dev/prod) via Terraform workspaces or branches  
+- 💡 IAM roles must follow least-privilege principles to ensure security  
+- 💡 Writing clean Terraform modules = reusable + scalable cloud architecture  
+- 💡 IaC + CI/CD = production-grade DevOps practice  
+
+---
+
+## 🟢 Let’s Connect!
+
+If you’re passionate about DevOps or curious about AWS automation, let’s connect!  
+I’d love to exchange ideas, discuss strategies, or collaborate on exciting projects.  
+Drop your thoughts in the comments or reach out!
+
+---
+
