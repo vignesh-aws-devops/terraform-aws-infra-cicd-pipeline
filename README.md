@@ -1,4 +1,4 @@
-# 🚀 Terraform CI/CD Pipeline on AWS
+# 🚀 Automated Terraform CI/CD Pipeline on AWS
 
 Automated the provisioning and management of AWS infrastructure using a fully integrated CI/CD pipeline powered by Terraform, AWS CodePipeline, and CodeBuild. This setup ensures faster, repeatable, and error-free deployments — all triggered by code commits on GitHub!
 
