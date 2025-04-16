@@ -52,7 +52,7 @@ If you’re passionate about DevOps or curious about AWS automation, let’s con
 I’d love to exchange ideas, discuss strategies, or collaborate on exciting projects.  
 Drop your thoughts in the comments or reach out!
 
-**LinkedIn Profile:** [LinkedIn](www.linkedin.com/in/vignesh-kumars)
+🔗 **LinkedIn Profile:** [linkedin.com/in/vignesh-kumars](https://www.linkedin.com/in/vignesh-kumars)
 
 ---
 
