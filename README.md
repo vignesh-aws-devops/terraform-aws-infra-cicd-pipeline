@@ -21,6 +21,13 @@ Automated the provisioning and management of AWS infrastructure using a fully in
 ![Terraform CI/CD Architecture](terraform-aws-cicd%20pipeline.png)
 
 ---
+![Terraform CI/CD Architecture 1](AWS CodePipeline.png)
+
+![Terraform CI/CD Architecture 2](AWS Code Build Image.png)
+
+![Terraform CI/CD Architecture 3](AWS Code Build Image 2.png)
+
+![Terraform CI/CD Architecture 4](terraform s3 backend.png)
 
 ## 🛠️ CI/CD Workflow & Commands Used
 
